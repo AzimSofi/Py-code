@@ -1,20 +1,5 @@
-# This code defines a class TicTacToeGUI that inherits from QMainWindow. In the constructor, 
-# it creates the players, the game board (which is a vertical layout containing nine QPushButton widgets), 
-# and the status label. It also sets up the main layout and sets the central widget. 
-# Finally, it starts the game by setting self.current_player to self.x_player and calling self.update_board().
-
-# The update_board() method updates the text of the squares to match the game board and sets the text of the status label depending on the state of the game.
-
-# The square_clicked() method is called when a square is clicked. 
-# It makes a move in the game using the current player's letter and updates the board. 
-# If there is a winner or a tie, it disables all the squares.
-
-# The end_game() method disables all the squares.
-
-# To run the game, simply execute the `
-
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLabel
 from Game import TicTacToe
 from Player import Human, Computer
 
@@ -31,21 +16,22 @@ class TicTacToeGUI(QMainWindow):
 
         # Create the game board
         self.board_widget = QWidget()
-        self.board_layout = QVBoxLayout()
+        self.board_layout = QGridLayout()
         self.board_widget.setLayout(self.board_layout)
 
         # Create the squares
         self.squares = []
-        for i in range(9):
-            square = QPushButton()
-            square.setFixedSize(100, 100)
-            square.clicked.connect(lambda _, i=i: self.square_clicked(i))
-            self.squares.append(square)
-            self.board_layout.addWidget(square)
+        for i in range(3):
+            for j in range(3):
+                square = QPushButton()
+                square.setFixedSize(100, 100)
+                square.clicked.connect(lambda _, i=i, j=j: self.square_clicked(i*3 + j))
+                self.squares.append(square)
+                self.board_layout.addWidget(square, i, j)
 
         # Create the status label
         self.status_label = QLabel()
-        self.board_layout.addWidget(self.status_label)
+        self.board_layout.addWidget(self.status_label, 3, 0, 1, 3)
 
         # Create the main layout
         self.main_layout = QHBoxLayout()
