@@ -1,7 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLabel
 from Game import TicTacToe
-from Player import Human, Computer
+from Player import HumanPlayer, RandomComputerPlayer, SmartComputerPlayer
 
 
 class TicTacToeGUI(QMainWindow):
@@ -11,8 +11,8 @@ class TicTacToeGUI(QMainWindow):
         self.game = TicTacToe()
 
         # Create the players
-        self.x_player = Human('X')
-        self.o_player = Computer('O')
+        self.x_player = HumanPlayer('X')
+        self.o_player = SmartComputerPlayer('O')
 
         # Create the game board
         self.board_widget = QWidget()
