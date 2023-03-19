@@ -2,6 +2,7 @@
 I've created a tic-tac-toe game that can be played on the console, but I have yet to implement it in a GUI using PyQt6.
 
 **Getting Started**
+
 To run the game on the console, simply run the following command in your terminal:
 python game.py
 
