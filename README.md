@@ -11,7 +11,6 @@ python GUI_pyqt6.py
 **Dependencies**
 This project relies on the following thrid-party libraries:
 - Pyside6: https://wiki.qt.io/Qt_for_Python
-- QT: https://www.qt.io/
 
 **Usage**
 Once the game is running, you can start playing by following the prompts on the screen.
