@@ -8,6 +8,11 @@ python game.py
 To run the game with a GUI, you will need to install PyQt6. Once you have installed PyQt6, run the following command in your terminal:
 python GUI_pyqt6.py
 
+**Dependencies**
+This project relies on the following thrid-party libraries:
+- Pyside6: https://wiki.qt.io/Qt_for_Python
+- QT: https://www.qt.io/
+
 **Usage**
 Once the game is running, you can start playing by following the prompts on the screen.
 
