@@ -16,11 +16,7 @@ class TicTacToe:
             print('| ' + ' |'.join(row) + ' |')
 
     def available_move(self):
-        moves = list()
-        for (i, spot) in enumerate(self.board):
-            if spot == ' ':
-                moves.append(i)
-        return moves
+        return [i for i, spot in enumerate(self.board) if spot == ' ']
 
     def empty_squares(self):
         return " " in self.board
@@ -38,13 +34,10 @@ class TicTacToe:
 
         if self.board[square] == ' ':
             self.board[square] = letter
-
             if self.winner(square, letter):
                 self.current_winner = letter
-                return letter # Letter that wins
             return True
-        else:
-            return False
+        return False
 
     def winner(self, square, letter):
         # Winner if three in a row/column/diagonal
@@ -73,7 +66,6 @@ class TicTacToe:
 
 def play(game, x_player, o_player, print_game = True):
     # If there is a winner return letter, if tie return None
-
     if print_game:
         game.print_board_nums()
 
@@ -92,8 +84,10 @@ def play(game, x_player, o_player, print_game = True):
                 game.print_board()
                 print("") # empty line
 
-            if game.current.winner and print_game: #
-                print(letter + " wins!")
+            if game.current_winner:
+                if print_game:
+                    print(letter + ' wins!')
+                return letter
 
             # If there is a winner, stop here
             # After move, alternate the letter (x,o)
